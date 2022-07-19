@@ -1,25 +1,12 @@
 import React from 'react';
 import { Table, TableBody, TableHead, TableCell, TableRow } from '@mui/material';
 import Customer from './Customer';
-import axios from 'axios';
-import useAsync from '../customHook/useAsync'; // 객체들은 {} 안감싸고 그냥 불러오기 💚
 
-async function getCustomer() {
-    const response = await axios.get(`http://localhost:3001/customers`);
-    return response.data;
-}
-
-const CustomerList = () => {
-    const [state] = useAsync(getCustomer, []);
-    const {loading, data, error} = state;
-    if(loading) return <div>~~~~~로딩~~~~~</div>;
-    if(error) return <div>~~~~~에러~~~~~</div>;
-    if(!data) return <div>~~~~~값 없오~~~~~</div>;
-
+const CustomerUi = ({ customers }) => { // 💛 
     return (
-        // http://localhost:3000/
+        // CustomerList 복붙
         <div>
-            <h2>고객리스트</h2>
+            <h2>고객리스트 REDUX</h2>
             <Table>
                 <TableHead>
                     <TableRow>
@@ -33,7 +20,7 @@ const CustomerList = () => {
                 </TableHead>
 
                 <TableBody>
-                    {data.map(customer => (
+                    {customers.map(customer => (
                         <Customer key={customer.no} customer={customer}></Customer>
                     ))}
                 </TableBody>
@@ -42,4 +29,4 @@ const CustomerList = () => {
     );
 };
 
-export default CustomerList;
+export default CustomerUi;

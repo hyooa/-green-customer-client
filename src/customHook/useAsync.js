@@ -7,7 +7,7 @@ const initialState = {
     error : null
 }
 
-function reducer (state, action) {
+function reducer (state, action) { // 3개의 상태관리, 반환해주는 값
     switch (action.type) {
         case "LOADING" :
         return {

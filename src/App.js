@@ -5,6 +5,9 @@ import Footer from './conponents/Footer';
 import Header from './conponents/Header';
 import { Route, Routes } from 'react-router-dom';
 import CreateCustomer from './conponents/CreateCustomer';
+import EditCustomer from './conponents/EditCustomer';
+import CustomerContainer from './conponents/CustomerContainer';
+import CreateCustomerContainer from './conponents/CreateCustomerContainer';
 
 const customers =[
   {
@@ -39,9 +42,12 @@ function App() {
       <Header></Header>
 
       <Routes>
-        <Route path="/" element={<CustomerList customers={customers} />} />
+        <Route path="/" element={<CustomerContainer />} />
+        <Route path="/writer" element={<CreateCustomerContainer />} />
+        {/* <Route path="/" element={<CustomerList customers={customers} />} /> */}
+        {/* <Route path="/writer" element={<CreateCustomer />} /> */}
         <Route path="/customer/:no" element={<DetailCustomer />} />
-        <Route path="/writer" element={<CreateCustomer />} />
+        <Route path="/editCustomer/:no" element={<EditCustomer />} />
       </Routes>
 
       <Footer></Footer>
